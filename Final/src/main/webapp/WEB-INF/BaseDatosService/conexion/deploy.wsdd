@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BaseDatosService WSDL service -->
+
+  <service name="BaseDatos" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://conexion"/>
+      <parameter name="wsdlServiceElement" value="BaseDatosService"/>
+      <parameter name="schemaQualified" value="http://conexion"/>
+      <parameter name="wsdlServicePort" value="BaseDatos"/>
+      <parameter name="className" value="conexion.BaseDatos"/>
+      <parameter name="wsdlPortType" value="BaseDatos"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://conexion" name="crearTabla" qname="operNS:CrearTabla" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://conexion" xmlns:retNS="http://conexion" xmlns:rtns="http://conexion" xmlns:tns="http://conexion" name="consultaInfo" qname="operNS:consultaInfo" returnQName="retNS:consultaInfoReturn" returnType="rtns:ArrayOf_xsd_anyType" returnItemQName="tns:item" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://conexion" name="tabla" qname="operNS:Tabla" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="crearTabla tabla consultaInfo"/>
+
+      <typeMapping xmlns:ns="http://conexion" qname="ns:&gt;CrearTabla" type="java:conexion.CrearTabla" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://conexion" qname="ns:&gt;consultaInfoResponse" type="java:conexion.ConsultaInfoResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://conexion" qname="ns:&gt;CrearTablaResponse" type="java:conexion.CrearTablaResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://conexion" qname="ns:&gt;consultaInfo" type="java:conexion.ConsultaInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://conexion" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_anyType" type="java:java.lang.Object[]" innerType="cmp-ns:anyType" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://conexion" qname="ns:&gt;Tabla" type="java:conexion.Tabla" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://conexion" qname="ns:&gt;TablaResponse" type="java:conexion.TablaResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

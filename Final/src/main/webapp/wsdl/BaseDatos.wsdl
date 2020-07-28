@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://conexion" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://conexion" xmlns:intf="http://conexion" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://conexion" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="CrearTabla">
+    <complexType/>
+   </element>
+   <element name="CrearTablaResponse">
+    <complexType/>
+   </element>
+   <element name="consultaInfo">
+    <complexType/>
+   </element>
+   <element name="consultaInfoResponse">
+    <complexType>
+     <sequence>
+      <element name="consultaInfoReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_anyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <element name="Tabla">
+    <complexType/>
+   </element>
+   <element name="TablaResponse">
+    <complexType/>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="TablaResponse">
+
+      <wsdl:part element="impl:TablaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultaInfoRequest">
+
+      <wsdl:part element="impl:consultaInfo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="CrearTablaRequest">
+
+      <wsdl:part element="impl:CrearTabla" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="CrearTablaResponse">
+
+      <wsdl:part element="impl:CrearTablaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultaInfoResponse">
+
+      <wsdl:part element="impl:consultaInfoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="TablaRequest">
+
+      <wsdl:part element="impl:Tabla" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="BaseDatos">
+
+      <wsdl:operation name="CrearTabla">
+
+         <wsdl:input message="impl:CrearTablaRequest" name="CrearTablaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:CrearTablaResponse" name="CrearTablaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultaInfo">
+
+         <wsdl:input message="impl:consultaInfoRequest" name="consultaInfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:consultaInfoResponse" name="consultaInfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="Tabla">
+
+         <wsdl:input message="impl:TablaRequest" name="TablaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:TablaResponse" name="TablaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BaseDatosSoapBinding" type="impl:BaseDatos">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="CrearTabla">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="CrearTablaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="CrearTablaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultaInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consultaInfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consultaInfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="Tabla">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="TablaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="TablaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BaseDatosService">
+
+      <wsdl:port binding="impl:BaseDatosSoapBinding" name="BaseDatos">
+
+         <wsdlsoap:address location="http://localhost:8080/examenfinal/services/BaseDatos"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

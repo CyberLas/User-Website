@@ -1,0 +1,87 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BaseDatosService WSDL service -->
+
+  <service name="BaseDatos" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://conexion"/>
+      <parameter name="wsdlServiceElement" value="BaseDatosService"/>
+      <parameter name="schemaQualified" value="http://conexion"/>
+      <parameter name="wsdlServicePort" value="BaseDatos"/>
+      <parameter name="className" value="conexion.BaseDatosSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="BaseDatos"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="crearTabla" qname="operNS:CrearTabla" xmlns:operNS="http://conexion" soapAction="" >
+      </operation>
+      <operation name="consultaInfo" qname="operNS:consultaInfo" xmlns:operNS="http://conexion" returnQName="retNS:consultaInfoReturn" xmlns:retNS="http://conexion" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://conexion" returnItemQName="tns:item" xmlns:tns="http://conexion" soapAction="" >
+      </operation>
+      <operation name="tabla" qname="operNS:Tabla" xmlns:operNS="http://conexion" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="crearTabla tabla consultaInfo"/>
+
+      <typeMapping
+        xmlns:ns="http://conexion"
+        qname="ns:>CrearTabla"
+        type="java:conexion.CrearTabla"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://conexion"
+        qname="ns:>consultaInfoResponse"
+        type="java:conexion.ConsultaInfoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://conexion"
+        qname="ns:>CrearTablaResponse"
+        type="java:conexion.CrearTablaResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://conexion"
+        qname="ns:>consultaInfo"
+        type="java:conexion.ConsultaInfo"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://conexion"
+        qname="ns:ArrayOf_xsd_anyType"
+        type="java:java.lang.Object[]"
+        innerType="cmp-ns:anyType" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://conexion"
+        qname="ns:>Tabla"
+        type="java:conexion.Tabla"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://conexion"
+        qname="ns:>TablaResponse"
+        type="java:conexion.TablaResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
